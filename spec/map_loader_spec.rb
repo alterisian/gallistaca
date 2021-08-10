@@ -17,11 +17,27 @@ RSpec.describe :MapLoader do
          end
     end
 
+    context "Given a narrow map valid file" do
+        it "loads the map" do
+            subject = MapLoader.new("spec/fixtures/valid_shrink_map.txt")
+
+            expect(subject).to be_valid
+         end
+    end
+
     context "Given an invalid file" do
         it "reports that map is invalid" do
             subject = MapLoader.new("./spec/fixtures/invalid_map.txt")
 
             expect(subject).to_not be_valid
+        end
+
+        xit "reports that map is invalid if it has an impassable obstacle" do
+
+        end
+
+        xit "reports that map is invalid if the player movement speed makes the map impassable" do
+
         end
     end
 end
