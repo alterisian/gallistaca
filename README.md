@@ -20,3 +20,18 @@ The ship is initially placed at bottom, in the centre.
 
 The game can be infleunced by this Flappy Birds clone:
 https://github.com/tiagopog/flappy_bird
+
+Flappy Birds uses a ruby 2d library:
+
+===
+
+To run the tests for this project run:
+rspec
+in the root of the project.
+
+The goal is to run the game by typing:
+ruby gallistaca.rb
+
+During the development phase, run by:
+ruby window.rb
+===

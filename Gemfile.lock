@@ -15,12 +15,14 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
+    ruby2d (0.10.0)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
   rspec
+  ruby2d
 
 BUNDLED WITH
    2.2.17
