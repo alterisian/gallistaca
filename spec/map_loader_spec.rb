@@ -17,6 +17,14 @@ RSpec.describe :MapLoader do
          end
     end
 
+    context "the maploader gives us access to a map" do
+      it "allows us to access the map data" do
+        map_loader = MapLoader.new("spec/fixtures/valid_map.txt")
+        expect(map_loader.map).to_not be_nil
+      end
+
+    end
+
     context "Given a narrow map valid file" do
         it "loads the map" do
             subject = MapLoader.new("spec/fixtures/valid_shrink_map.txt")

@@ -35,3 +35,13 @@ ruby gallistaca.rb
 During the development phase, run by:
 ruby window.rb
 ===
+
+TODOs
+
+- refactor spike into nice classes
+
+- movement handling (key presses, touch screen, mouse movement)
+- draw ship 
+- read map file
+
+- can we inspect the screen (a little bit)

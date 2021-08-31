@@ -1,7 +1,7 @@
 require 'ruby2d'
 
 HEIGHT = 800
-WIDTH = 400
+WIDTH = 400 #1400
 GRID_CELL_SIZE = 40
 
 set title: "Gallistaca",
@@ -11,7 +11,7 @@ set title: "Gallistaca",
 
   possible_obstacles = []
 
-  (1...4).each do
+  (1...19).each do
     possible_obstacles << Square.new(
       x: rand(WIDTH/GRID_CELL_SIZE)*GRID_CELL_SIZE, y: rand(HEIGHT/GRID_CELL_SIZE)*GRID_CELL_SIZE,
       size: GRID_CELL_SIZE,
@@ -65,10 +65,10 @@ set title: "Gallistaca",
 # Game loop
 ##
 
-visible_obtacles = []
+visible_obtacles = possible_obstacles
 frame_count = 0
 
-puts "Cubes: #{possible_obstacles.length}"
+puts "Cubes: #{visible_obtacles.length}"
 
 update do
   frame_count += 1
@@ -76,17 +76,18 @@ update do
   #  user
   # add obsctacle
   # move obsctacle
-  if frame_count % 50 == 0
-    puts "Adding new obj at frame: #{frame_count}. "
-    visible_obtacles << possible_obstacles[rand(possible_obstacles.length)]
-  end
+  # IM: Commenting out below, as forgot why we are adding random blocks in.
+  # if frame_count % 50 == 0
+  #   puts "Adding new obj at frame: #{frame_count}. "
+  #   visible_obtacles << possible_obstacles[rand(possible_obstacles.length)]
+  # end
 
   visible_obtacles.each do |visible_obstacle|
-    if frame_count % 25 == 0
+    if frame_count % 20 == 0
       visible_obstacle.y += GRID_CELL_SIZE
 
       if visible_obstacle.y > HEIGHT
-        visible_obstacle.y = -50
+        visible_obstacle.y = -1 * GRID_CELL_SIZE
       end
     end
   end

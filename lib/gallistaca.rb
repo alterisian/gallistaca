@@ -1,14 +1,17 @@
 require 'ruby2d'
 
 class Gallistaca
-
-    @ship_position = [0,5]
-    @map = nil
+    DEFAULT_WIDTH = 400
+    @map = []
     # load in sprites
 
     # place the ship on the map
-    def initialize(width)
-        @ship_position=[0, floor(width/2)] #is it floor?
+    def initialize(width=DEFAULT_WIDTH)
+      
+    end
+
+    def draw_routine(all_obstacles)
+      # all_obstacles
     end
 
     def collision_detection
