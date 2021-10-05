@@ -1,30 +1,60 @@
 require 'ruby2d'
 
-class Gallistaca
+class Gallistaca < Ruby2D::Window
     attr_reader :all_obstacles
 
     DEFAULT_HEIGHT = 800
     GRID_CELL_SIZE = 40
     DEFAULT_WIDTH = 400
+    DEFAULT_NUMBER_START_OBJECTS = 20
     @map = []
-    # load in sprites
 
-    # place the ship on the map
     def initialize()
-      @all_obstacles = generate_obstacles
-      update_cycle
+      super
 
-      Text.new message
+      Window.set(title: "Gallistaca",
+        width: Gallistaca::DEFAULT_WIDTH,
+        height: Gallistaca::DEFAULT_HEIGHT,
+        background: 'blue')
+
+      @all_obstacles = generate_obstacles
+
+      # load in sprites
+
+      # update_cycle
+
+      Text.new start_message
     end
 
-    def message
+    def start_message
       "Press Key To Start"
+    end
+
+    def show
+      #super
+    Window.show
+    #
+    #   # puts "after show"
+    #   # update do
+    #   #   puts "in update"
+    #   #   update_cycle
+    #   # end
+    end
+
+    def start
+
+      update( method(:update_cycle) )
+
+      # Window.update do
+      #   puts "in start"
+      #   gallistaca.update_cycle
+      # end
     end
 
     def generate_obstacles
       obstacles = []
 
-      (1...19).each do
+      (0...DEFAULT_NUMBER_START_OBJECTS).each do
         obstacles << Square.new(
           x: rand(DEFAULT_WIDTH/GRID_CELL_SIZE)*GRID_CELL_SIZE, y: rand(DEFAULT_HEIGHT/GRID_CELL_SIZE)*GRID_CELL_SIZE,
           size: GRID_CELL_SIZE,
@@ -40,9 +70,9 @@ class Gallistaca
       0
     end
 
-    def draw_screen
-      #redraw
-    end
+    # def draw_screen
+    #   #redraw
+    # end
 
     def collision_detection
         # make it crash with the wall.
@@ -50,7 +80,7 @@ class Gallistaca
     end
 
     def update_cycle
-        puts "Length: #{@all_obstacles.length}"
+        puts "Number of obstacles: #{@all_obstacles.length}"
         # make it move through the map
         @all_obstacles.each_with_index do |obstacle, index|
           obstacle.y += 1

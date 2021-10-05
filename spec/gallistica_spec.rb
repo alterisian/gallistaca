@@ -24,14 +24,14 @@ RSpec.describe :Gallistaca do
 
           it "draw screen with no obstacles" do
               gallistaca = Gallistaca.new
-              expect("Press Key To Start").to be()
+
               expect(gallistaca.number_of_obstacles).to be(0)
           end
 
           it "until there is an input from the user, the game is paused." do
-            gallistaca = Gallistaca.new
+              gallistaca = Gallistaca.new
 
-              expect(gallistaca.message).to eq("Press Key To Start")
+              expect(gallistaca.start_message).to eq("Press Key To Start")
           end
 
     end
