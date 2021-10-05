@@ -6,7 +6,7 @@ class Gallistaca < Ruby2D::Window
     DEFAULT_HEIGHT = 800
     GRID_CELL_SIZE = 40
     DEFAULT_WIDTH = 400
-    DEFAULT_NUMBER_START_OBJECTS = 20
+    DEFAULT_NUMBER_START_OBJECTS = 5
     @map = []
 
     def initialize()
@@ -21,8 +21,6 @@ class Gallistaca < Ruby2D::Window
 
       # load in sprites
 
-      # update_cycle
-
       Text.new start_message
     end
 
@@ -31,24 +29,17 @@ class Gallistaca < Ruby2D::Window
     end
 
     def show
-      #super
-    Window.show
-    #
-    #   # puts "after show"
-    #   # update do
-    #   #   puts "in update"
-    #   #   update_cycle
-    #   # end
+      Window.show
     end
 
     def start
-
-      update( method(:update_cycle) )
-
+      show
+      #Window.update_proc = Proc.new { |x| gallistaca.update_cycle }
       # Window.update do
-      #   puts "in start"
-      #   gallistaca.update_cycle
-      # end
+        puts "in start"
+        #gallistaca.update_cycle
+      #end
+
     end
 
     def generate_obstacles
@@ -67,21 +58,12 @@ class Gallistaca < Ruby2D::Window
     end
 
     def number_of_obstacles
-      0
-    end
-
-    # def draw_screen
-    #   #redraw
-    # end
-
-    def collision_detection
-        # make it crash with the wall.
-        # make it crash with an obstacle.
+      @all_obstacles.length
     end
 
     def update_cycle
         puts "Number of obstacles: #{@all_obstacles.length}"
-        # make it move through the map
+
         @all_obstacles.each_with_index do |obstacle, index|
           obstacle.y += 1
 
@@ -92,7 +74,9 @@ class Gallistaca < Ruby2D::Window
 
     end
 
-    def input_detected
-        # make it respond to user input
+    def end_of_game
+      Text.new "Thanks for playing...."
+      #sleep(3)
+      Window.close
     end
 end

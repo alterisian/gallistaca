@@ -1,20 +1,10 @@
 require_relative "./lib/gallistaca.rb"
 
-# set(title: "Gallistaca",
-#   width: Gallistaca::DEFAULT_WIDTH,
-#   height: Gallistaca::DEFAULT_HEIGHT,
-#   background: 'blue')
-
 gallistaca = Gallistaca.new
 
-gallistaca.update do
+update do
   gallistaca.update_cycle
+  gallistaca.end_of_game if gallistaca.number_of_obstacles == 0
 end
-
-#show # we dont like this, still
-#Ruby2D::Window::show
-#Window.show
-
-#gallistaca.start
-
-gallistaca.show
+# TODO: move the above Proc to be inside gallistaca.start somehow
+gallistaca.start
