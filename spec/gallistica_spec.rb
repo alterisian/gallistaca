@@ -2,11 +2,6 @@
 
 RSpec.describe :Gallistaca do
     context "Gallistaca is invoked" do
-        it "does not raise an exception, with a width parameter" do
-            expect do
-                Gallistaca.new(400)
-            end.to_not raise_error(Exception)
-         end
          it "does not raise an exception, without parameter" do
              expect do
                  Gallistaca.new
@@ -15,11 +10,29 @@ RSpec.describe :Gallistaca do
           it "draw screen takes all element on the grid and pushes them one row down" do
             gallistaca = Gallistaca.new
 
-            before_position = gallistaca.all_obstacles.first.y
-            gallistaca.update_cycle
-            after_position = gallistaca.all_obstacles.first.y
+            first_before_position = gallistaca.all_obstacles.first.y
+            last_before_position = gallistaca.all_obstacles.last.y
 
-            expect(after_position).to be(before_position-1)
+            gallistaca.update_cycle
+
+            first_after_position = gallistaca.all_obstacles.first.y
+            last_after_position = gallistaca.all_obstacles.last.y
+
+            expect(first_after_position).to be(first_before_position+1)
+            expect(last_after_position).to be(last_before_position+1)
           end
+
+          it "draw screen with no obstacles" do
+              gallistaca = Gallistaca.new
+              expect("Press Key To Start").to be()
+              expect(gallistaca.number_of_obstacles).to be(0)
+          end
+
+          it "until there is an input from the user, the game is paused." do
+            gallistaca = Gallistaca.new
+
+              expect(gallistaca.message).to eq("Press Key To Start")
+          end
+
     end
 end

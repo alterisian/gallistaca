@@ -10,9 +10,15 @@ class Gallistaca
     # load in sprites
 
     # place the ship on the map
-    def initialize(width=DEFAULT_WIDTH)
+    def initialize()
       @all_obstacles = generate_obstacles
       update_cycle
+
+      Text.new message
+    end
+
+    def message
+      "Press Key To Start"
     end
 
     def generate_obstacles
@@ -28,6 +34,10 @@ class Gallistaca
       end
 
       obstacles
+    end
+
+    def number_of_obstacles
+      0
     end
 
     def draw_screen

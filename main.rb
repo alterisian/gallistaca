@@ -11,4 +11,4 @@ update do
   gallistaca.update_cycle
 end
 
-show
+show # we dont like this, still
